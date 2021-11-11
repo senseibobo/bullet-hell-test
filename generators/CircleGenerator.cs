@@ -7,6 +7,7 @@ public class CircleGenerator : Generator
     [Export] protected float angle;
     [Export] protected float headStart = 0.0f;
     [Export] protected float incrementDegrees = 0.0f;
+    [Export] protected float incrementDegreesRandom = 0.0f;
 
     float currentIncrement = 0.0f;
     protected override void Shoot()
@@ -21,6 +22,7 @@ public class CircleGenerator : Generator
             Vector2 position = GlobalPosition + headStart * velocity;
             AddBullet(velocity, position);
         }
-        currentIncrement += incrementDegrees;
+        RandomNumberGenerator rand = new RandomNumberGenerator();
+        currentIncrement += incrementDegrees + rand.RandfRange(-incrementDegreesRandom,incrementDegreesRandom);
     }
 }
