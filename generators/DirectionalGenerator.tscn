@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://generators/DirectionalGenerator.cs" type="Script" id=1]
+
+[node name="DirectionalGenerator" type="Node2D"]
+script = ExtResource( 1 )
+Direction = Vector2( 0.334, 1.087 )
+Angle = 1.64

@@ -1,0 +1,9 @@
+S:\Godot Games\Skola bullet hell\.mono\temp\bin\Debug\Skola bullet hell.dll
+S:\Godot Games\Skola bullet hell\.mono\temp\bin\Debug\Skola bullet hell.pdb
+S:\Godot Games\Skola bullet hell\.mono\temp\obj\Debug\Skola bullet hell.csproj.AssemblyReference.cache
+S:\Godot Games\Skola bullet hell\.mono\temp\obj\Debug\Skola bullet hell.GeneratedMSBuildEditorConfig.editorconfig
+S:\Godot Games\Skola bullet hell\.mono\temp\obj\Debug\Skola bullet hell.AssemblyInfoInputs.cache
+S:\Godot Games\Skola bullet hell\.mono\temp\obj\Debug\Skola bullet hell.AssemblyInfo.cs
+S:\Godot Games\Skola bullet hell\.mono\temp\obj\Debug\Skola bullet hell.csproj.CoreCompileInputs.cache
+S:\Godot Games\Skola bullet hell\.mono\temp\obj\Debug\Skola bullet hell.dll
+S:\Godot Games\Skola bullet hell\.mono\temp\obj\Debug\Skola bullet hell.pdb
