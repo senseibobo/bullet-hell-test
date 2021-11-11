@@ -83,6 +83,7 @@ public class Generator : Node2D
         if(IsInstanceValid(Game.player) && bullet.position.DistanceSquaredTo(Game.player.GlobalPosition) < bullet.radiusSquared)
         {
             bullet.currentTime = bullet.lifeTime + 1.0f;
+            Game.player.Hit();
         }
     }
     public override void _Draw()

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "S:\\Godot Games\\Skola bullet hell\\Skola bullet hell.csproj",
+      "projectUniqueName": "S:\\Godot Games\\bullet-hell-test\\Skola bullet hell.csproj",
       "projectName": "Skola bullet hell",
-      "projectPath": "S:\\Godot Games\\Skola bullet hell\\Skola bullet hell.csproj",
+      "projectPath": "S:\\Godot Games\\bullet-hell-test\\Skola bullet hell.csproj",
       "packagesPath": "C:\\Users\\boboa\\.nuget\\packages\\",
-      "outputPath": "S:\\GODOT GAMES\\SKOLA BULLET HELL\\.mono\\temp\\obj\\",
+      "outputPath": "S:\\Godot Games\\bullet-hell-test\\.mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "S:\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -10,11 +10,12 @@ public class PlayerTrackingGenerator : Generator
 	public override void _Process(float delta)
 	{
 		base._Process(delta);
-        currentRotation = Mathf.MoveToward(
-            currentRotation,
-            currentRotation + Game.AngleToAngle(currentRotation,GlobalPosition.AngleToPoint(Game.player.GlobalPosition)),
-            rotationSpeed*delta
-        );
+        if(IsInstanceValid(Game.player))
+            currentRotation = Mathf.MoveToward(
+                currentRotation,
+                currentRotation + Game.AngleToAngle(currentRotation,GlobalPosition.AngleToPoint(Game.player.GlobalPosition)),
+                rotationSpeed*delta
+            );
 	}
 	protected override void Shoot()
     {

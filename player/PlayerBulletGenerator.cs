@@ -17,6 +17,7 @@ public class PlayerBulletGenerator : Generator
         if(IsInstanceValid(Game.enemy) && bullet.position.DistanceSquaredTo(Game.enemy.GlobalPosition) < Game.enemy.radius*Game.enemy.radius)
         {
             bullet.currentTime = bullet.lifeTime + 1.0f;
+            Game.enemy.Hit();
         }
     }
     protected override void Shoot() {
