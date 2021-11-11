@@ -23,6 +23,7 @@ public class CircleGenerator : Generator
             AddBullet(velocity, position);
         }
         RandomNumberGenerator rand = new RandomNumberGenerator();
+        rand.Randomize();
         currentIncrement += incrementDegrees + rand.RandfRange(-incrementDegreesRandom,incrementDegreesRandom);
     }
 }
