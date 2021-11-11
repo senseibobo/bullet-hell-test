@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://player/Player.cs" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://player/PlayerBulletGenerator.tscn" type="PackedScene" id=3]
+[ext_resource path="res://bullets/textures/01.png" type="Texture" id=4]
 
 [node name="Player" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,4 +16,5 @@ texture = ExtResource( 2 )
 [node name="PlayerBulletGenerator" parent="." instance=ExtResource( 3 )]
 interval = 0.05
 speed = 800.0
+texture = ExtResource( 4 )
 shooting = false

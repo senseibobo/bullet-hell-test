@@ -9,7 +9,7 @@ public class Generator : Node2D
     [Export] protected float lifeTime = 3.0f;
     [Export] protected Vector2 size = new Vector2(16f,16f);
     [Export] protected float radius = 3.0f;
-    [Export] protected Texture texture = GD.Load<Texture>("res://bullets/textures/01.png");
+    [Export] protected Texture texture = GD.Load<Texture>("res://bullets/textures/02.png");
     [Export] protected CSharpScript bulletType = GD.Load<CSharpScript>("res://bullets/Bullet.cs");
     [Export] protected int shotsPerInterval = 1;
     [Export] protected float[] additionalArgs = new float[3] {1f,1f,1f};
