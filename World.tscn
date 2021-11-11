@@ -1,25 +1,31 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://generators/DirectionalGenerator.tscn" type="PackedScene" id=2]
-[ext_resource path="res://bullets/textures/01.png" type="Texture" id=3]
-[ext_resource path="res://bullets/types/PlayerTrackingBullet.cs" type="Script" id=4]
+[ext_resource path="res://generators/PlayerTrackingGenerator.tscn" type="PackedScene" id=2]
+[ext_resource path="res://generators/CircleGenerator.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemies/TestEnemy.tscn" type="PackedScene" id=4]
 
 [node name="World" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 531, 13 )
+[node name="TestEnemy" parent="." instance=ExtResource( 4 )]
+position = Vector2( 317, 104 )
+radius = 32.0
 
-[node name="DirectionalGenerator" parent="." instance=ExtResource( 2 )]
-position = Vector2( 318, 140 )
-RemoveAllBullets = true
-speed = 150.0
-lifeTime = 5.0
-texture = ExtResource( 3 )
-bulletType = ExtResource( 4 )
-shotsPerInterval = 18
-additionalArgs = PoolRealArray( 10, 1, 0, 0 )
-Direction = Vector2( 1, 0 )
-Angle = 1.649
-horizontalOffsetRandom = 2.0
-verticalOffsetRandom = 10.0
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288, 273 )
+
+[node name="CircleGenerator" parent="." instance=ExtResource( 3 )]
+position = Vector2( 228, 137 )
+interval = 0.2
+lifeTime = 30.0
+count = 30
+incrementDegreesRandom = 1000.0
+
+[node name="PlayerTrackingGenerator" parent="." instance=ExtResource( 2 )]
+position = Vector2( 228, 138 )
+interval = 0.045
+speed = 200.0
+shotsPerInterval = 26
+rotationSpeed = 0.2
+horizontalOffsetRandom = 6.62
+verticalOffsetRandom = 12.79
