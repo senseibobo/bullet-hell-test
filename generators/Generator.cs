@@ -4,14 +4,15 @@ using System.Collections.Generic;
 
 public class Generator : Node2D
 {
-    [Export] protected float interval;
-    [Export] protected float speed;
-    [Export] protected float lifeTime;
-    [Export] protected Vector2 size = new Vector2(16f,16);
-    [Export] protected Texture texture;
-    [Export] protected CSharpScript bulletType;
+    [Export] protected float interval = 0.2f;
+    [Export] protected float speed = 50.0f;
+    [Export] protected float lifeTime = 3.0f;
+    [Export] protected Vector2 size = new Vector2(16f,16f);
+    [Export] protected float radius = 3.0f;
+    [Export] protected Texture texture = GD.Load<Texture>("res://bullets/textures/01.png");
+    [Export] protected CSharpScript bulletType = GD.Load<CSharpScript>("res://bullets/Bullet.cs");
     [Export] protected int shotsPerInterval = 1;
-    [Export] protected float[] additionalArgs = new float[0];
+    [Export] protected float[] additionalArgs = new float[3] {1f,1f,1f};
     [Export] protected int frameCount = 1;
     [Export] protected float frameDuration = 0.1f;
     [Export] protected bool processing = true;
@@ -75,12 +76,15 @@ public class Generator : Node2D
             bullet.currentTime += delta;
             bullet.Process(delta);
         }
+        CheckDistance(bullet);
+    }
+    public virtual void CheckDistance(Bullet bullet) 
+    {
         if(IsInstanceValid(Game.player) && bullet.position.DistanceSquaredTo(Game.player.GlobalPosition) < bullet.radiusSquared)
         {
             bullet.currentTime = bullet.lifeTime + 1.0f;
         }
     }
-
     public override void _Draw()
     {
         base._Draw();
@@ -109,6 +113,7 @@ public class Generator : Node2D
         bullet.frameDuration = frameDuration;
         bullet.texture = texture;
         bullet.size = size;
+        bullet.radiusSquared = Mathf.Pow(radius,2);
         bullets.Add(bullet);
         bullet.Ready();
         return bullet;
