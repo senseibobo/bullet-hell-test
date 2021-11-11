@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://enemies/TestEnemy.cs" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -19,6 +19,50 @@ tracks/0/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 320, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PlayerTrackingGenerator:shooting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CircleGenerator:processing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "attack1"
@@ -35,12 +79,54 @@ tracks/0/keys = {
 "update": 1,
 "values": [ true, false ]
 }
-
-[sub_resource type="Animation" id=12]
-resource_name = "attack2"
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 320, -0.25, 0, 1.1, -1.76282, 0, -1.3, 3.74124, 2.6, 0.102875, 640, -2.5, -30.7565, 1.53, 4.82928, 320, -1.07, -8.67465, 0.3, 6.1723 ),
+"times": PoolRealArray( 0, 2.5, 7.5, 10 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 10 )
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "idle"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerTrackingGenerator:shooting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CircleGenerator:processing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="AnimationNodeAnimation" id=6]
 animation = "RESET"
@@ -79,6 +165,7 @@ graph_offset = Vector2( -321, -82 )
 [node name="TestEnemy" type="Node2D"]
 position = Vector2( 320, 0 )
 script = ExtResource( 1 )
+maxHealth = 920.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -86,7 +173,6 @@ texture = ExtResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )
 anims/attack1 = SubResource( 2 )
-anims/attack2 = SubResource( 12 )
 anims/idle = SubResource( 8 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -96,7 +182,20 @@ active = true
 parameters/playback = SubResource( 4 )
 
 [node name="CircleGenerator" parent="." instance=ExtResource( 3 )]
+speed = 80.0
+lifeTime = 10.0
 shooting = false
-count = 20
+count = 10
+incrementDegreesRandom = 10.0
 
 [node name="PlayerTrackingGenerator" parent="." instance=ExtResource( 4 )]
+interval = 0.0
+speed = 250.0
+size = Vector2( 24, 24 )
+radius = 4.0
+shotsPerInterval = 10
+shooting = false
+rotationSpeed = 10.0
+currentRotation = 1.57
+horizontalOffsetRandom = 10.0
+verticalOffsetRandom = 20.0

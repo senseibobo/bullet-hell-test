@@ -5,7 +5,7 @@ public class Player : Character
 {
 	[Export] float movement_speed = 100.0f;
 	[Export] float invulnerabilityTime = 1.0f;
-	private float hitTimer;
+	public float hitTimer = 0.0f;
 
     public override void _Ready()
     {
@@ -24,9 +24,7 @@ public class Player : Character
 	}
 	public override void Hit()
 	{
-		if(hitTimer <= 0.0f){
-			base.Hit();
-			hitTimer = invulnerabilityTime;
-		}
+		base.Hit();
+		hitTimer = invulnerabilityTime;
 	}
 }

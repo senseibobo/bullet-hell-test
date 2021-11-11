@@ -23,6 +23,16 @@ public class Generator : Node2D
         get { return false; }
     }
 
+    public CSharpScript BulletType 
+    {
+        set {bulletType = value;}
+        get {return bulletType;}
+    } 
+    public float[] AdditionalArgs 
+    {
+        set {additionalArgs = value;}
+        get {return additionalArgs;}
+    }
     Game gameNode;
 
     float timer = 0.0f;
@@ -80,8 +90,9 @@ public class Generator : Node2D
     }
     public virtual void CheckDistance(Bullet bullet) 
     {
-        if(IsInstanceValid(Game.player) && bullet.position.DistanceSquaredTo(Game.player.GlobalPosition) < bullet.radiusSquared)
+        if(IsInstanceValid(Game.player) && bullet.position.DistanceSquaredTo(Game.player.GlobalPosition) < bullet.radiusSquared && Game.player.hitTimer <= 0.0f)
         {
+            GD.Print(Game.player.hitTimer);
             bullet.currentTime = bullet.lifeTime + 1.0f;
             Game.player.Hit();
         }

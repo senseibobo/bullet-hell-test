@@ -1,21 +1,22 @@
 using Godot;
 using System;
 
-public class TestEnemy : Node2D
+public class TestEnemy : Enemy
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
-
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+    public int phase = 1;
+	public override void Hit()
+	{
+		base.Hit();
+        if(health < 900.0f && phase == 1) {
+            phase = 2;
+            SetSineBullets();
+            GD.Print("Phase 2");
+        }
+	}
+    public void SetSineBullets()
     {
-        
+        CircleGenerator gen = GetNode<CircleGenerator>("CircleGenerator");
+        gen.BulletType = (CSharpScript)GD.Load("res://bullets/types/SineBullet.cs");
+        gen.AdditionalArgs = new float[] {50.0f,1.0f,0.0f,1.0f};
     }
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
 }
