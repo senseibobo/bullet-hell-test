@@ -12,7 +12,6 @@ public class CircleGenerator : Generator
     float currentIncrement = 0.0f;
     protected override void Shoot()
     {
-        GD.Print(bullets.Count);
         base.Shoot();
         for(int i = 0; i < count; i++)
         {

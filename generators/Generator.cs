@@ -92,7 +92,6 @@ public class Generator : Node2D
     {
         if(IsInstanceValid(Game.player) && bullet.position.DistanceSquaredTo(Game.player.GlobalPosition) < bullet.radiusSquared && Game.player.hitTimer <= 0.0f)
         {
-            GD.Print(Game.player.hitTimer);
             bullet.currentTime = bullet.lifeTime + 1.0f;
             Game.player.Hit();
         }

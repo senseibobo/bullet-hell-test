@@ -6,8 +6,6 @@ public class SquareGenerator : Generator
     [Export] protected int bulletsPerSide;
 	protected override void Shoot()
     {
-        GD.Print(bullets.Count);
-		GD.Print(Engine.GetFramesPerSecond());
         base.Shoot();
         for(int i = 0; i < bulletsPerSide; i++)
         {
