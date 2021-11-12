@@ -3,6 +3,7 @@ using System;
 
 public class SquareWaveBullet : GraphBullet
 {
+    public SquareWaveBullet() { }
     public SquareWaveBullet(float[] additionalArgs) : base(additionalArgs) 
     {
 

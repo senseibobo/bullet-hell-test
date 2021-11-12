@@ -3,6 +3,7 @@ using System;
 
 public class SineBullet : GraphBullet
 {
+    public SineBullet() { }
     public SineBullet(float[] additionalArgs) : base(additionalArgs) 
     {
 
