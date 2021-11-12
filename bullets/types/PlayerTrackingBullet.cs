@@ -16,10 +16,13 @@ public class PlayerTrackingBullet : Bullet
     }
     public override void Process(float delta)
     {
-        float angleToPlayer = position.AngleToPoint(player.GlobalPosition);
-        float currentAngle = velocity.Angle();
-        velocity = velocity.Rotated(rotationSpeed * Math.Sign(Math.Round(Game.AngleToAngle(currentAngle, angleToPlayer)))*delta);
-        if (textureRotating) rotation = velocity.Angle();
+        if(IsInstanceValid(player)) 
+        {
+            float angleToPlayer = position.AngleToPoint(player.GlobalPosition);
+            float currentAngle = velocity.Angle();
+            velocity = velocity.Rotated(rotationSpeed * Math.Sign(Math.Round(Game.AngleToAngle(currentAngle, angleToPlayer)))*delta);
+            if (textureRotating) rotation = velocity.Angle();
+        }
         base.Process(delta);
     }
 }
