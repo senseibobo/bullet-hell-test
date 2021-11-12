@@ -16,7 +16,7 @@ public class Character : Node2D
     public virtual void Hit() 
     {
         health -= 1;
-        if(health < 0) {
+        if(health <= 0) {
             Death();
         }
     }
