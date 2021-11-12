@@ -1,0 +1,410 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://enemies/Ljilja/Ljilja.cs" type="Script" id=1]
+[ext_resource path="res://enemies/Ljilja/Ljilja.png" type="Texture" id=2]
+[ext_resource path="res://generators/DirectionalGenerator.tscn" type="PackedScene" id=3]
+[ext_resource path="res://generators/PlayerTrackingGenerator.tscn" type="PackedScene" id=4]
+[ext_resource path="res://bullets/types/RotatingBullet.cs" type="Script" id=5]
+[ext_resource path="res://generators/CircleGenerator.tscn" type="PackedScene" id=6]
+[ext_resource path="res://bullets/types/SineBullet.cs" type="Script" id=7]
+[ext_resource path="res://bullets/types/PlayerTrackingBullet.cs" type="Script" id=8]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CircleGenerator:shooting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CircleGenerator:angle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 6.28 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 100, 50 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CircleGenerator:additionalArgs")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ PoolRealArray( 0.5, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PlayerTrackingGenerator:additionalArgs")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ PoolRealArray( 50, 5, 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("PlayerTrackingGenerator:speed")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 100.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("PlayerTrackingGenerator:shooting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("DirectionalGenerator:shooting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("DirectionalGenerator:shotsPerInterval")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "phase1"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CircleGenerator:shooting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CircleGenerator:angle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 12.56 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5.1, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 100, 50 ), Vector2( 380, 50 ), Vector2( 100, 50 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CircleGenerator:additionalArgs")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 5.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ PoolRealArray( 0.5, 1, 1 ), PoolRealArray( -0.5, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PlayerTrackingGenerator:shooting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DirectionalGenerator:shooting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "phase2"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerTrackingGenerator:shooting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 2.5, 4, 5, 6.5, 7.5, 9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerTrackingGenerator:additionalArgs")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 9.5 ),
+"transitions": PoolRealArray( 1, 1e-05 ),
+"update": 0,
+"values": [ PoolRealArray( 50, 2, 0, 0 ), PoolRealArray( 50, 4, 10, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 240, 50 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CircleGenerator:shooting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DirectionalGenerator:shooting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "phase3"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("DirectionalGenerator:shooting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DirectionalGenerator:shotsPerInterval")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.2, 2.5, 3.8, 5, 6.3, 7.5, 9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 5, 0, 4, 0, 4, 0, 4, 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.5, 5, 7.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 60, 60 ), Vector2( 420, 60 ), Vector2( 60, 300 ), Vector2( 420, 300 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CircleGenerator:shooting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PlayerTrackingGenerator:shooting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "phase1"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "phase2"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "phase3"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachine" id=3]
+states/phase1/node = SubResource( 5 )
+states/phase1/position = Vector2( 464, 41 )
+states/phase2/node = SubResource( 7 )
+states/phase2/position = Vector2( 619, 41 )
+states/phase3/node = SubResource( 10 )
+states/phase3/position = Vector2( 777, 41 )
+transitions = [ "phase1", "phase2", SubResource( 8 ), "phase2", "phase3", SubResource( 11 ) ]
+start_node = "phase1"
+graph_offset = Vector2( 4, -78 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=4]
+
+[node name="Ljilja" type="Node2D"]
+position = Vector2( 100, 50 )
+script = ExtResource( 1 )
+maxHealth = 500.0
+radius = 32.0
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/phase1 = SubResource( 2 )
+anims/phase2 = SubResource( 6 )
+anims/phase3 = SubResource( 9 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 3 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 4 )
+
+[node name="CircleGenerator" parent="." instance=ExtResource( 6 )]
+interval = 0.3
+speed = 100.0
+lifeTime = 6.0
+bulletType = ExtResource( 5 )
+additionalArgs = PoolRealArray( 0.5, 1, 1 )
+shooting = false
+count = 20
+angle = 6.28
+headStart = 0.3
+
+[node name="PlayerTrackingGenerator" parent="." instance=ExtResource( 4 )]
+interval = 0.0
+speed = 100.0
+lifeTime = 6.0
+bulletType = ExtResource( 7 )
+additionalArgs = PoolRealArray( 50, 5, 0, 0 )
+shooting = false
+rotationSpeed = 100.0
+currentRotation = 1.57
+horizontalOffsetRandom = 20.0
+verticalOffsetRandom = 20.0
+
+[node name="DirectionalGenerator" parent="." instance=ExtResource( 3 )]
+interval = 0.07
+speed = 90.0
+lifeTime = 6.0
+size = Vector2( 32, 32 )
+bulletType = ExtResource( 8 )
+additionalArgs = PoolRealArray( 0.3, 1 )
+shooting = false
+directionRandom = 6.0
+horizontalOffsetRandom = 20.0
+verticalOffsetRandom = 20.0
