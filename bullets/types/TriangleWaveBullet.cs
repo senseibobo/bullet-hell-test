@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class SineBullet : Bullet
+public class TriangleWaveBullet : Bullet
 {
     private float amplitude = 100.0f;
     private float frequency = 10.0f;
@@ -11,8 +11,8 @@ public class SineBullet : Bullet
     private Vector2 startPos;
     private Vector2 startDir;
     private float speed;
-    public SineBullet() { }
-    public SineBullet(float[] additionalArgs) : base(additionalArgs)
+    public TriangleWaveBullet() { }
+    public TriangleWaveBullet(float[] additionalArgs) : base(additionalArgs)
     {
         amplitude = additionalArgs[0];
         frequency = additionalArgs[1];
@@ -22,7 +22,8 @@ public class SineBullet : Bullet
     public override void Process(float delta)
     {
         Vector2 oldPosition = position;
-        position = startPos + speed * startDir * currentTime + startDir.Rotated(Mathf.Pi/2)*amplitude*((Mathf.Sin(phase+frequency*currentTime)));
+        float result = Mathf.Abs(((currentTime*frequency + phase) % 2.0f)-1.0f)-0.5f;
+        position = startPos + speed * startDir * currentTime + startDir.Rotated(Mathf.Pi/2)*amplitude*result;
         if (textureRotating) rotation = (position-oldPosition).Angle();
     }
     public override void Ready()
