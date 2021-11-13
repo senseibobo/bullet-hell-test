@@ -5,6 +5,7 @@ public class PlayerBulletGenerator : Generator
 {
     public override void _Ready()
     {
+        base._Ready();
         shooting = false;
     }
     public override void _UnhandledInput(InputEvent @event)
