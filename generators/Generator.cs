@@ -17,6 +17,8 @@ public class Generator : Node2D
     [Export] protected float frameDuration = 0.1f;
     [Export] protected bool processing = true;
     [Export] protected bool shooting = true;
+    private MultiMeshInstance2D multimeshInstance;
+    private MultiMesh multimesh;
     [Export] protected bool RemoveAllBullets
     {
         set { for (int i = 0; i < bullets.Count; i++) bullets[i].Free(); bullets.RemoveRange(0,bullets.Count); }
@@ -44,11 +46,21 @@ public class Generator : Node2D
     {
         base._Ready();
         gameNode = GetNode<Game>("/root/Game");
+        multimeshInstance = new MultiMeshInstance2D();
+        multimeshInstance.Texture = texture;
+        multimeshInstance.SetAsToplevel(true);
+        multimesh = new MultiMesh();
+        multimesh.ColorFormat = MultiMesh.ColorFormatEnum.None;
+        multimeshInstance.Multimesh = multimesh;
+        QuadMesh mesh = new QuadMesh();
+        mesh.Size = size;
+        multimesh.Mesh = mesh;
+        AddChild(multimeshInstance);
     }
 
     public override void _Process(float delta)
     {
-        base._PhysicsProcess(delta);
+        base._Process(delta);
         if (shooting)
         {
             timer += delta;
@@ -75,6 +87,7 @@ public class Generator : Node2D
         if (bullet.lifeTime < bullet.currentTime)
         {
             bullet.Free();
+            multimesh.InstanceCount -= 1;
             return true;
         }
         return false;
@@ -99,21 +112,16 @@ public class Generator : Node2D
     public override void _Draw()
     {
         base._Draw();
-        foreach(Bullet bullet in bullets)
+        for(int i = 0; i < multimesh.InstanceCount; i++)
         {
-            Vector2 pos = bullet.position - bullet.size.Rotated(bullet.rotation) / 2.0f - GlobalPosition;
-            DrawSetTransform(pos, bullet.rotation, bullet.scale);
-            
-            int currentFrame = (int)(bullet.currentTime / bullet.frameDuration) % bullet.frameCount;
-            Vector2 frameSize = new Vector2(bullet.texture.GetSize().x / bullet.frameCount, bullet.texture.GetSize().y);
-
-            Rect2 rect = new Rect2(0f, 0f, bullet.size);
-            Rect2 srcRect = new Rect2(bullet.texture.GetSize().x / (bullet.frameCount) * currentFrame, 0f, frameSize);
-            DrawTextureRectRegion(bullet.texture, rect, srcRect);
+            Bullet bullet = bullets[i];
+            Transform2D transform = new Transform2D(bullet.rotation,bullet.position);
+            multimesh.SetInstanceTransform2d(i,transform);
         }
     }
     public Bullet AddBullet(Vector2 velocity, Vector2 position)
     {
+        multimesh.InstanceCount += 1;
         Bullet bullet = (Bullet)bulletType.New(additionalArgs);
         bullet.velocity = velocity;
         bullet.position = position;
